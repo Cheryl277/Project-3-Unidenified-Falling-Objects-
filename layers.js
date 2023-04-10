@@ -3,28 +3,28 @@ let militaryBases = "Resources/military-bases.json"
 let datapromise  = d3.json(militaryBases);
 
 datapromise.then(function(data) {
-    console.log(data)
-})
-//array of military bases
+    //console.log(data[0]["geo_shape"]["geometry"]["coordinates"][0])
+    let dataCoords  = data[0]["geo_shape"]["geometry"]["coordinates"][0]
+
+//array of the military base coordinates
 //need to insert data
-var bases = {
-    baseNumber:,
-    locations : 
+var bases = []; 
+for (let i = 0; i < dataCoords.length; i++) {
+    bases.push(dataCoords[i])
 };
+console.log(bases)
 
-//an array that will store the created military base markers
-var baseMarkers = []; 
-
-for (var i = 0; i < bases.length; i++) {
-    // loop through the cities array, create a new marker, and push it to the baseMarkers array
-    baseMarkers.push(
-      L.marker(bases[i].location).bindPopup("<h1>" + bases[i].baseNumber + "</h1>")
+var basesMarkers = [];
+for (var i = 0; i < basesMarkers.length; i++) {
+    // loop through the bases array, create a new marker, and push it to the baseMarkers array
+    basesMarkers.push(
+      L.marker(bases[i]).bindPopup("<h1>" + i + "</h1>")
     );
   }
   
-  // Add all the cityMarkers to a new layer group.
+  // Add all the baseMarkers to a new layer group.
   // Now, we can handle them as one group instead of referencing each one individually.
-  var baseLayer = L.layerGroup(cityMarkers);
+  var baseLayer = L.layerGroup(basesMarkers);
   
   // Define variables for our tile layers.
   var street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -56,4 +56,4 @@ for (var i = 0; i < bases.length; i++) {
   // Pass our map layers into our layer control.
   // Add the layer control to the map.
   L.control.layers(baseMaps, overlayMaps).addTo(myMap);
-  
+});
