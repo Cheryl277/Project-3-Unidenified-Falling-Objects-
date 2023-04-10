@@ -7,21 +7,20 @@ datapromise.then(function(data) {
     let dataCoords  = data[0]["geo_shape"]["geometry"]["coordinates"][0]
 
 //array of the military base coordinates
-//need to insert data
 var bases = []; 
 for (let i = 0; i < dataCoords.length; i++) {
+    //bases["location"] = dataCoords[i];
     bases.push(dataCoords[i])
 };
-console.log(bases)
-
 var basesMarkers = [];
-for (var i = 0; i < basesMarkers.length; i++) {
+for (var i = 0; i < bases.length; i++) {
     // loop through the bases array, create a new marker, and push it to the baseMarkers array
     basesMarkers.push(
-      L.marker(bases[i]).bindPopup("<h1>" + i + "</h1>")
+      L.marker(bases[i]).bindPopup("<h1>" + bases[i] + "</h1>")
     );
   }
   
+  console.log(basesMarkers);
   // Add all the baseMarkers to a new layer group.
   // Now, we can handle them as one group instead of referencing each one individually.
   var baseLayer = L.layerGroup(basesMarkers);
