@@ -1,22 +1,40 @@
 let militaryBases = "Resources/military-bases.json"
+let UFOData = "Resources/ufo_data.json"
 
-let datapromise  = d3.json(militaryBases);
+//import multiple json files
+//datapromise.all.then(function(data) {
 
-datapromise.then(function(data) {
-    //console.log(data[0]["geo_shape"]["geometry"]["coordinates"][0])
-    let dataCoords  = data[0]["geo_shape"]["geometry"]["coordinates"][0]
-
+Promise.all([d3.json(militaryBases), d3.json(UFOData)]).then(function(data) {
 //array of the military base coordinates
-var bases = []; 
-for (let i = 0; i < dataCoords.length; i++) {
+var baseCoords = []; 
+var baseNames = [];
+
+for (let i = 0; i < data[0].length; i++) {
     //bases["location"] = dataCoords[i];
-    bases.push(dataCoords[i])
+    //bases.push(dataCoords[i])
+    baseCoords.push(Object.values(data[0][i]["geo_point_2d"]).reverse());
+    baseNames.push(data[0][i]["site_name"]);
 };
+
+console.log(baseCoords);
+console.log(data[1][0].ufo_latitude);
+console.log(data[1]);
+var UFOCoords = [];
+var UFOCity = [];
+
+for (let j = 0; j < data[1].length; j++) {
+    //UFOCoords.push(Object.values(data[1][j]["ufo_latitude"]), Object.values(data[1][j]["ufo_longitude"]));
+    UFOCoords.push(data[1][j].ufo_latitude);
+    UFOCity.push(data[1][j]["city"]);
+};
+
+console.log(UFOCoords); 
+
 var basesMarkers = [];
-for (var i = 0; i < bases.length; i++) {
-    // loop through the bases array, create a new marker, and push it to the baseMarkers array
+for (var i = 0; i < baseCoords.length; i++) {
+    // loop through the basesCoords and baseNames array, create a new marker, and push it to the baseMarkers array
     basesMarkers.push(
-      L.marker(bases[i]).bindPopup("<h1>" + bases[i] + "</h1>")
+      L.marker(baseCoords[i]).bindPopup("<h1>" + baseNames[i] + "</h1>")
     );
   }
   
@@ -47,8 +65,8 @@ for (var i = 0; i < bases.length; i++) {
   
   // Create a map object, and set the default layers.
   var myMap = L.map("map", {
-    center: [46.2276, 2.2137],
-    zoom: 6,
+    center: [37.0902, -95.7129],
+    zoom: 5,
     layers: [street, baseLayer]
   });
   
