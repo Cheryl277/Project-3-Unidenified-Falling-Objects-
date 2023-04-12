@@ -1,34 +1,51 @@
 let militaryBases = "Resources/military-bases.json"
 let UFOData = "Resources/ufo_data.json"
+let meteoriteLandings = "Resources/Meteorite_Landings.geojson"
 
 //import multiple json files
 //datapromise.all.then(function(data) {
 
-Promise.all([d3.json(militaryBases), d3.json(UFOData)]).then(function(data) {
-//array of the military base coordinates
+Promise.all([d3.json(militaryBases), d3.json(UFOData), d3.json(meteoriteLandings)]).then(function(data) {
+    //assign variables to each file
+    var basesJSON = data[0];
+    var UFOJSON = data[1];
+    var meteoriteJSON = data[2];
+
+    console.log(typeof(meteoriteJSON.features[0].properties));
+    //outputs object
+
+    //array of the military base coordinates
 var baseCoords = []; 
 var baseNames = [];
 
+//pushes coordinates and city names to arrays
 for (let i = 0; i < data[0].length; i++) {
-    //bases["location"] = dataCoords[i];
-    //bases.push(dataCoords[i])
-    baseCoords.push(Object.values(data[0][i]["geo_point_2d"]).reverse());
-    baseNames.push(data[0][i]["site_name"]);
+    baseCoords.push(Object.values(basesJSON[i]["geo_point_2d"]).reverse());
+    baseNames.push(basesJSON[i]["site_name"]);
 };
 
-console.log(baseCoords);
-console.log(data[1][0].ufo_latitude);
-console.log(data[1]);
-var UFOCoords = [];
+//returns the value of the desired key for meteoriteJSON
+function getValuebyKey(object, key) { 
+    return Object.values(object).find(value => key[object] === key);
+}
+
+console.log(getValuebyKey(meteoriteJSON.features, "latitude"));
+var UFOLat = [];
+var UFOLon = [];
 var UFOCity = [];
 
 for (let j = 0; j < data[1].length; j++) {
     //UFOCoords.push(Object.values(data[1][j]["ufo_latitude"]), Object.values(data[1][j]["ufo_longitude"]));
-    UFOCoords.push(data[1][j].ufo_latitude);
+    UFOLat.push(data[1][j].ufo_latitude);
+    UFOLon.push(data[1][j].ufo_longitude);
     UFOCity.push(data[1][j]["city"]);
 };
-
-console.log(UFOCoords); 
+/*
+var meteorCoords = [];
+for (let k = 0; k < data[2].features.length; k++) {
+    meteorCoords.push(Object.values(data[2].features[0].properties[5]));
+};
+*/
 
 var basesMarkers = [];
 for (var i = 0; i < baseCoords.length; i++) {
