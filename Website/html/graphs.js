@@ -1,7 +1,17 @@
 function init() {
+    //Get the JSON data and console log it
+    d3.json('./Resources/ufo_to_bases.json').then(function (data) {
+        let ufo_bases_data = data;
+        console.log(ufo_bases_data)
+    });
+
+    d3.json('./Resources/sightings_by_year.json').then(function (data) {
+        let sightings_data = data;
+        console.log(sightings_data)
+    });
 
     //histogram graph
-    d3.json('../Resources/ufo_to_bases.json').then(function (data) {
+    d3.json('./Resources/ufo_to_bases.json').then(function (data) {
         let distance_values = data.distance;
 
         var trace = {
@@ -30,8 +40,8 @@ function init() {
 
     });
 
-//line graph
-    d3.json('../Resources/sightings_by_year.json').then(function (data) {
+    //line graph
+    d3.json('./Resources/sightings_by_year.json').then(function (data) {
 
         var trace1 = {
             x: data.year,
@@ -82,8 +92,8 @@ function init() {
 
         var layout = {
             title: 'Sightings by Year (1910 - 2023)',
-            xaxis: {title: 'Year'},
-            yaxis: {title: 'Number of Sightings'}
+            xaxis: { title: 'Year' },
+            yaxis: { title: 'Number of Sightings' }
         };
 
         Plotly.newPlot("line", line_data, layout);
