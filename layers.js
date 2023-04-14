@@ -11,7 +11,6 @@ Promise.all([d3.json(militaryBases), d3.json(UFOData), d3.json(meteoriteLandings
     var UFOJSON = data[1];
     var meteoriteJSON = data[2];
 
-    console.log(typeof(meteoriteJSON.features[0].properties));
     //outputs object
 
     //array of the military base coordinates
@@ -25,21 +24,18 @@ for (let i = 0; i < data[0].length; i++) {
 };
 
 //returns the value of the desired key for meteoriteJSON
-function getValuebyKey(object, key) { 
-    return Object.values(object).find(value => key[object] === key);
-}
 
-console.log(getValuebyKey(meteoriteJSON.features, "latitude"));
 var UFOLat = [];
 var UFOLon = [];
 var UFOCity = [];
 
-for (let j = 0; j < data[1].length; j++) {
+for (let j = 0; j < 67052; j++) {
     //UFOCoords.push(Object.values(data[1][j]["ufo_latitude"]), Object.values(data[1][j]["ufo_longitude"]));
-    UFOLat.push(data[1][j].ufo_latitude);
-    UFOLon.push(data[1][j].ufo_longitude);
-    UFOCity.push(data[1][j]["city"]);
+    UFOLat.push(UFOJSON[j].ufo_latitude);
+    UFOLon.push(UFOJSON[j].ufo_longitude);
+    UFOCity.push(UFOJSON[j].city);
 };
+console.log(UFOLat[1]);
 /*
 var meteorCoords = [];
 for (let k = 0; k < data[2].features.length; k++) {
@@ -54,11 +50,18 @@ for (var i = 0; i < baseCoords.length; i++) {
       L.marker(baseCoords[i]).bindPopup("<h1>" + baseNames[i] + "</h1>")
     );
   }
-  
+
+  var ufoMarkers = [];
+  for (i = 0; i <UFOLat.length; i++) {
+  ufoMarkers.push(
+    L.marker([UFOLat[i], UFOLon[i]]).bindPopup("<h2>" + UFOCity[i] + "Sighting")
+  )}
+
+  console.log(ufoMarkers);
   console.log(basesMarkers);
   // Add all the baseMarkers to a new layer group.
   // Now, we can handle them as one group instead of referencing each one individually.
-  var baseLayer = L.layerGroup(basesMarkers);
+  var baseLayer = L.layerGroup(basesMarkers, ufoMarkers);
   
   // Define variables for our tile layers.
   var street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
