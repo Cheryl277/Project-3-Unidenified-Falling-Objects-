@@ -41,13 +41,16 @@ for (i = 0; i < meteoriteJSON.length; i++){
   meteorCoords.push(meteoriteJSON[i].geometry.coordinates.reverse())
 }
 console.log(meteorCoords);
-
+var baseIcon = L.icon({
+  iconUrl : "/Layers/base-clipart.png",
+  iconSize : [35,35]
+})
 //creating the markers for each military bases
 var basesMarkers = [];
 for (var i = 0; i < baseCoords.length; i++) {
     // loop through the basesCoords and baseNames array, create a new marker, and push it to the baseMarkers array
     basesMarkers.push(
-      L.marker(baseCoords[i]).bindPopup("<h1>" + baseNames[i] + "</h1>")
+      L.marker(baseCoords[i], {icon : baseIcon}).bindPopup("<h1>" + baseNames[i] + "</h1>")
     );
   }
 
