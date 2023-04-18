@@ -1,47 +1,54 @@
 function init() {
     //Get the JSON data and console log it
-    d3.json('./Resources/ufo_to_bases.json').then(function (data) {
-        let ufo_bases_data = data;
-        console.log(ufo_bases_data)
-    });
+    // d3.json('../Resources/ufo_to_bases.json').then(function (data) {
+    //     let ufo_bases_data = data;
+    //     console.log(ufo_bases_data);
+    // });
 
-    d3.json('./Resources/sightings_by_year.json').then(function (data) {
+    d3.json('../Resources/sightings_by_year.json').then(function (data) {
         let sightings_data = data;
-        console.log(sightings_data)
+        console.log(sightings_data);
     });
 
     //histogram graph
-    d3.json('./Resources/ufo_to_bases.json').then(function (data) {
-        let distance_values = data.distance;
+    // d3.json('../Resources/ufo_to_bases.json').then(function (data) {
+    
+    //     let distance_values = data.distance;
 
-        var trace = {
-            x: distance_values,
-            type: 'histogram',
-            autobinx: true,
-        };
+    //     var trace = {
+    //         x: distance_values,
+    //         type: 'histogram',
+    //         autobinx: true,
+    //     };
 
-        var histogram_data = [trace];
+    //     var histogram_data = [trace];
 
-        let layout = {
-            margin: {
-                t: 55,
-                r: 25,
-                l: 65,
-                b: 25
-            },
-            title: "Distance from UFO Sighting to Closest Military Base (miles)",
-            xaxis: { title: "Distance to Closest Military Base (miles)" },
-            yaxis: { title: "Count" }
-        };
+    //     let layout = {
+    //         margin: {
+    //             t: 55,
+    //             r: 25,
+    //             l: 65,
+    //             b: 25
+    //         },
+    //         title: "Distance from UFO Sighting to Closest Military Base (miles)",
+    //         xaxis: { title: "Distance to Closest Military Base (miles)" },
+    //         yaxis: { title: "Count" }
+    //     };
 
-        let config = { responsive: true }
+    //     let config = { responsive: true }
 
-        Plotly.newPlot("histogram", histogram_data, layout, config);
+    //     Plotly.newPlot("histogram", histogram_data, layout, config);
 
-    });
+    // });
 
     //line graph
-    d3.json('./Resources/sightings_by_year.json').then(function (data) {
+    d3.json('../Resources/sightings_by_year.json').then(function (data) {
+        // year = []
+        // ufo = []
+        // for (let i=0; i < data.length; i++) {
+        //     year.append(data[i][0])
+        //     ufo.append(data[i][1])
+        // }
 
         var trace1 = {
             x: data.year,
