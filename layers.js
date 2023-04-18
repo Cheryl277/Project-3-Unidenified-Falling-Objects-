@@ -1,6 +1,6 @@
 // set dataset files to variables
 let militaryBases = "Resources/military-bases.json"
-let UFOData = "Resources/ufo_data.json"
+let UFOData = "Resources/ufo_data_clean.json"
 let meteoriteLandings = "Resources/Meteorite_Landings.geojson"
 
 //read in all JSON data files
