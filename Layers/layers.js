@@ -3,7 +3,11 @@ let militaryBases = "Resources/military-bases.json"
 let UFOData = "Resources/ufo_data.json"
 let meteoriteLandings = "Resources/Meteorite_Landings.geojson"
 
-//read in all JSON data files
+//const collect = require('collect.js');
+
+//import multiple json files
+//datapromise.all.then(function(data) {
+
 Promise.all([d3.json(militaryBases), d3.json(UFOData), d3.json(meteoriteLandings)]).then(function(data) {
     //assign variables to each file
     var basesJSON = data[0];
@@ -20,15 +24,20 @@ for (let i = 0; i < data[0].length; i++) {
     baseNames.push(basesJSON[i]["site_name"]);
 };
 
+//returns the value of the desired key for meteoriteJSON
+
 var UFOLat = [];
 var UFOLon = [];
 var UFOCity = [];
 
 for (let j = 0; j < 67052; j++) {
+    //UFOCoords.push(Object.values(data[1][j]["ufo_latitude"]), Object.values(data[1][j]["ufo_longitude"]));
     UFOLat.push(UFOJSON[j].ufo_latitude);
     UFOLon.push(UFOJSON[j].ufo_longitude);
     UFOCity.push(UFOJSON[j].city);
 };
+console.log(meteoriteJSON[0].geometry);
+//for (let i = 0)
 
 var c = UFOLat.map(function(e, i) {
   return [e, UFOLon[i]];
@@ -38,11 +47,9 @@ console.log(c)
 var meteorCoords = [];
 
 for (i = 0; i < meteoriteJSON.length; i++){
-  meteorCoords.push(meteoriteJSON[i].geometry.coordinates.reverse())
+  meteorCoords.push(meteoriteJSON[i].geometry.coordinates)
 }
-console.log(meteorCoords);
 
-//creating the markers for each military bases
 var basesMarkers = [];
 for (var i = 0; i < baseCoords.length; i++) {
     // loop through the basesCoords and baseNames array, create a new marker, and push it to the baseMarkers array
@@ -51,31 +58,21 @@ for (var i = 0; i < baseCoords.length; i++) {
     );
   }
 
-  //creating an icon for UFO markers
-  var ufoIcon = L.icon({
-    iconUrl : "/Layers/ufo-clipart.png",
-    iconSize : [35,35]
-  })
-  //creating ufo markers
   var ufoMarkers = [];
   for (i = 0; i <100; i++) {
   ufoMarkers.push(
-    L.marker(c[i], {icon : ufoIcon}).bindPopup("<h2>" + UFOCity[i] + " Sighting")
+    L.marker(c[i]).bindPopup("<h2>" + UFOCity[i] + " Sighting")
   )}
 
-  //creating an icon for meteor sightings
-  var meteorIcon = L.icon({
-    iconUrl : "/Layers/asteroid-clipart-md.png",
-    iconSize : [35,35]
-  })
-//creating meteor sighting markers
   var meteorMarker = [];
   for (i = 0; i < meteorCoords.length; i++){
     meteorMarker.push(
-      L.marker(meteorCoords[i], {icon : meteorIcon}).bindPopup("<h3>" + meteoriteJSON[i].properties.name + " meteor sighting")
+      L.marker(meteorCoords[i]).bindPopup("<h3>" + meteoriteJSON[i].properties.name + " meteor sighting")
     )
   }
 
+  console.log(ufoMarkers);
+  console.log(basesMarkers);
   // Add all the baseMarkers to a new layer group.
   // Now, we can handle them as one group instead of referencing each one individually.
   var baseLayer = L.layerGroup(basesMarkers);
