@@ -1,14 +1,16 @@
 // set dataset files to variables
-let militaryBases = "Resources/military-bases.json"
-let UFOData = "Resources/ufo_data_clean.json"
-let meteoriteLandings = "Resources/Meteorite_Landings.geojson"
+let militaryBases = "/../Resources/military-bases.json"
+let UFOData = "/../Resources/ufo_data_clean.json"
+let meteoriteLandings = "/../Resources/Meteorite_Landings.geojson"
+let fireballReports = "/../Fireball.geojson"
 
 //read in all JSON data files
-Promise.all([d3.json(militaryBases), d3.json(UFOData), d3.json(meteoriteLandings)]).then(function(data) {
+Promise.all([d3.json(militaryBases), d3.json(UFOData), d3.json(meteoriteLandings), d3.json(fireballReports)]).then(function(data) {
     //assign variables to each file
     var basesJSON = data[0];
     var UFOJSON = data[1];
     var meteoriteJSON = data[2].features;
+    var fireballJSON = data[3];
 
     //array of the military base coordinates
 var baseCoords = []; 
@@ -40,7 +42,15 @@ var meteorCoords = [];
 for (i = 0; i < meteoriteJSON.length; i++){
   meteorCoords.push(meteoriteJSON[i].geometry.coordinates.reverse())
 }
-console.log(meteorCoords);
+
+/*
+console.log(fireballJSON["Latitude (Deg)"]);
+var fireballLat = [];
+for (i = 0; i < fireballJSON["Latitude (Deg)"].length; i++){
+  let latDec = 
+}
+*/
+
 var baseIcon = L.icon({
   iconUrl : "/Layers/base-clipart.png",
   iconSize : [35,35]
@@ -61,7 +71,7 @@ for (var i = 0; i < baseCoords.length; i++) {
   })
   //creating ufo markers
   var ufoMarkers = [];
-  for (i = 0; i <100; i++) {
+  for (i = 0; i <200; i++) {
   ufoMarkers.push(
     L.marker(c[i], {icon : ufoIcon}).bindPopup("<h2>" + UFOCity[i] + " Sighting")
   )}
