@@ -52,7 +52,7 @@ for (i = 0; i < fireballJSON["Latitude (Deg)"].length; i++){
 */
 
 var baseIcon = L.icon({
-  iconUrl : "/Layers/base-clipart.png",
+  iconUrl : "Layers/base-clipart.png",
   iconSize : [35,35]
 })
 //creating the markers for each military bases
@@ -66,7 +66,7 @@ for (var i = 0; i < baseCoords.length; i++) {
 
   //creating an icon for UFO markers
   var ufoIcon = L.icon({
-    iconUrl : "/Layers/ufo-clipart.png",
+    iconUrl : "Layers/ufo-clipart.png",
     iconSize : [35,35]
   })
   //creating ufo markers
@@ -78,7 +78,7 @@ for (var i = 0; i < baseCoords.length; i++) {
 
   //creating an icon for meteor sightings
   var meteorIcon = L.icon({
-    iconUrl : "/Layers/asteroid-clipart-md.png",
+    iconUrl : "Layers/asteroid-clipart-md.png",
     iconSize : [35,35]
   })
 //creating meteor sighting markers
