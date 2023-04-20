@@ -6,26 +6,27 @@ function init() {
     });
 
     d3.json('../Resources/sightings_by_year.json').then(function (data) {
+        // d3.json("http://localhost:8001/yourflaskroute").then(function (data) {
         let sightings_data = data;
-        console.log(Object.values(sightings_data).map(o => {return o.year}));
-        console.log(Object.values(sightings_data).map(o => {return o.ufo_sightings}));
+        console.log(Object.values(sightings_data).map(o => { return o.year }));
+        console.log(Object.values(sightings_data).map(o => { return o.ufo_sightings }));
     });
 
     //bar graph
     d3.json('../Resources/ufo_to_bases.json').then(function (data) {
 
         var trace = {
-            x: Object.values(data).map(o => {return o.dist}),
-            y: Object.values(data).map(o => {return o.datetime}),
+            x: Object.values(data).map(o => { return o.dist }),
+            y: Object.values(data).map(o => { return o.datetime }),
             type: 'bar',
         };
 
         var histogram_data = [trace];
 
         let layout = {
-            title: "Distance from UFO Sighting to Closest US Military Base (miles)",
+            title: "Distance from UFO Sighting to Closest Military Base (miles)",
             xaxis: { title: "Distance to Closest Military Base (miles)" },
-            yaxis: { title: "Count"},
+            yaxis: { title: "Count" },
         };
 
         let config = { responsive: true }
@@ -36,10 +37,10 @@ function init() {
 
     //line graph
     d3.json('../Resources/sightings_by_year.json').then(function (data) {
-        
+
         var trace1 = {
-            x: Object.values(data).map(o => {return o.year}),
-            y: Object.values(data).map(o => {return o.ufo_sightings}),
+            x: Object.values(data).map(o => { return o.year }),
+            y: Object.values(data).map(o => { return o.ufo_sightings }),
             mode: 'lines+markers',
             name: 'UFO Sightings',
             marker: {
@@ -52,24 +53,24 @@ function init() {
             }
         };
 
-        // var trace2 = {
-        //     x: Object.values(data).map(o => {return o.year}),
-        //     y: Object.values(data).map(o => {return o.fireball_sightings}),
-        //     mode: 'lines+markers',
-        //     name: 'Fireball Sightings',
-        //     marker: {
-        //         color: 'blue',
-        //         size: 3
-        //     },
-        //     line: {
-        //         color: 'blue',
-        //         width: 1
-        //     }
-        // };
+        var trace2 = {
+            x: Object.values(data).map(o => { return o.year }),
+            y: Object.values(data).map(o => { return o.fireball_sightings }),
+            mode: 'lines+markers',
+            name: 'Fireball Sightings',
+            marker: {
+                color: 'blue',
+                size: 3
+            },
+            line: {
+                color: 'blue',
+                width: 1
+            }
+        };
 
         var trace3 = {
-            x: Object.values(data).map(o => {return o.year}),
-            y: Object.values(data).map(o => {return o.meteorite_sightings}),
+            x: Object.values(data).map(o => { return o.year }),
+            y: Object.values(data).map(o => { return o.meteorite_sightings }),
             mode: 'lines+markers',
             name: 'Meteorite Sightings',
             marker: {
@@ -82,10 +83,10 @@ function init() {
             }
         };
 
-        var line_data = [trace1, trace3];
+        var line_data = [trace1, trace2, trace3];
 
         var layout = {
-            title: 'Sightings by Year (1900 - 2023) in the US',
+            title: 'Sightings by Year (1900 - 2023)',
             xaxis: { title: 'Year' },
             yaxis: { title: 'Number of Sightings' }
         };
