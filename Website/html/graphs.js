@@ -23,7 +23,7 @@ function init() {
         var histogram_data = [trace];
 
         let layout = {
-            title: "Distance from UFO Sighting to Closest Military Base (miles)",
+            title: "Distance from UFO Sighting to Closest US Military Base (miles)",
             xaxis: { title: "Distance to Closest Military Base (miles)" },
             yaxis: { title: "Count"},
         };
@@ -52,20 +52,20 @@ function init() {
             }
         };
 
-        var trace2 = {
-            x: Object.values(data).map(o => {return o.year}),
-            y: Object.values(data).map(o => {return o.fireball_sightings}),
-            mode: 'lines+markers',
-            name: 'Fireball Sightings',
-            marker: {
-                color: 'blue',
-                size: 3
-            },
-            line: {
-                color: 'blue',
-                width: 1
-            }
-        };
+        // var trace2 = {
+        //     x: Object.values(data).map(o => {return o.year}),
+        //     y: Object.values(data).map(o => {return o.fireball_sightings}),
+        //     mode: 'lines+markers',
+        //     name: 'Fireball Sightings',
+        //     marker: {
+        //         color: 'blue',
+        //         size: 3
+        //     },
+        //     line: {
+        //         color: 'blue',
+        //         width: 1
+        //     }
+        // };
 
         var trace3 = {
             x: Object.values(data).map(o => {return o.year}),
@@ -82,10 +82,10 @@ function init() {
             }
         };
 
-        var line_data = [trace1, trace2, trace3];
+        var line_data = [trace1, trace3];
 
         var layout = {
-            title: 'Sightings by Year (1900 - 2023)',
+            title: 'Sightings by Year (1900 - 2023) in the US',
             xaxis: { title: 'Year' },
             yaxis: { title: 'Number of Sightings' }
         };
