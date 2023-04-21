@@ -6,18 +6,20 @@ function init() {
     });
 
     d3.json('../Resources/sightings_by_year.json').then(function (data) {
-        // d3.json("http://localhost:8001/yourflaskroute").then(function (data) {
+    //d3.json("http://localhost:8001/yourflaskroute").then(function (data) {
         let sightings_data = data;
         console.log(Object.values(sightings_data).map(o => { return o.year }));
         console.log(Object.values(sightings_data).map(o => { return o.ufo_sightings }));
     });
 
     //bar graph
-    d3.json('../Resources/ufo_to_bases.json').then(function (data) {
-
+    //d3.json('../Resources/ufo_to_bases.json').then(function (data) {
+    d3.json("http://127.0.0.1:5000/bar_graph").then(function (data) {
         var trace = {
-            x: Object.values(data).map(o => { return o.dist }),
-            y: Object.values(data).map(o => { return o.datetime }),
+            //x: Object.values(data).map(o => { return o.dist }),
+            //y: Object.values(data).map(o => { return o.datetime }),
+            x: distance,
+            y: total_count,
             type: 'bar',
         };
 
