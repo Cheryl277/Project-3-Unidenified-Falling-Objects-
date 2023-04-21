@@ -1,8 +1,8 @@
 // set dataset files to variables
-let militaryBases = "..Resources/military-bases.json"
-let UFOData = "..Resources/ufo_data_clean.json"
-let meteoriteLandings = "..Resources/Meteorite_Landings.geojson"
-let fireballReports = "..Resources/Fireball.geojson"
+let militaryBases = "../Resources/military-bases.json"
+let UFOData = "../Resources/ufo_data_clean.json"
+let meteoriteLandings = "../Resources/Meteorite_Landings.geojson"
+let fireballReports = "../Resources/Fireball.geojson"
 
 //read in all JSON data files
 Promise.all([d3.json(militaryBases), d3.json(UFOData), d3.json(meteoriteLandings), d3.json(fireballReports)]).then(function(data) {
