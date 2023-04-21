@@ -1,11 +1,11 @@
 function init() {
     // Get the JSON data and console log it
-    d3.json('..Resources/ufo_to_bases.json').then(function (data) {
+    d3.json('../Resources/ufo_to_bases.json').then(function (data) {
         let ufo_bases_data = data;
         console.log(ufo_bases_data);
     });
 
-    d3.json('..Resources/sightings_by_year.json').then(function (data) {
+    d3.json('../Resources/sightings_by_year.json').then(function (data) {
         // d3.json("http://localhost:8001/yourflaskroute").then(function (data) {
         let sightings_data = data;
         console.log(Object.values(sightings_data).map(o => { return o.year }));
@@ -13,7 +13,7 @@ function init() {
     });
 
     //bar graph
-    d3.json('..Resources/ufo_to_bases.json').then(function (data) {
+    d3.json('../Resources/ufo_to_bases.json').then(function (data) {
 
         var trace = {
             x: Object.values(data).map(o => { return o.dist }),
@@ -36,7 +36,7 @@ function init() {
     });
 
     //line graph
-    d3.json('..Resources/sightings_by_year.json').then(function (data) {
+    d3.json('../Resources/sightings_by_year.json').then(function (data) {
 
         var trace1 = {
             x: Object.values(data).map(o => { return o.year }),
