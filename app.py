@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 
 from flask import Flask, jsonify
-
+from flask_cors import CORS
 #################################################
 # Database Setup
 #################################################
@@ -19,7 +19,7 @@ ufo_to_bases = Base.classes.df_full5_with_id
 # Flask Setup
 #################################################
 app = Flask(__name__)
-
+CORS(app)
 
 #################################################
 # Flask Routes

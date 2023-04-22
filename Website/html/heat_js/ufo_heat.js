@@ -31,12 +31,9 @@ Promise.all([d3.json(UFOData)]).then(function (data) {
 
     var heatArray = [];
 
-    for (var i = 0; i < response.length; i++) {
-        var location = response[i].location;
+    for (var i = 0; i < c.length; i++) {
 
-        if (location) {
-            heatArray.push([location.coordinates[1], location.coordinates[0]]);
-        }
+        heatArray.push([c[i][0], c[i][1]]);
     }
 
     var heat = L.heatLayer(heatArray, {
