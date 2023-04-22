@@ -1,33 +1,19 @@
-import numpy as np
-
-import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
+from sqlalchemy import create_engine
 
 from flask import Flask, jsonify
-import os
 
-import pdb; pdb.set_trace()
-
-# os.chdir("/Users/JonathanLilley_1/Documents/Analysis Projects/Project-3-Unidenified-Falling-Objects-")
-Base = automap_base()
 #################################################
 # Database Setup
 #################################################
 engine = create_engine("sqlite:///Resources/ufo_to_bases.sqlite")
-conn = engine.connect()
 
-# reflect an existing database into a new model
-
-# reflect the tables
+Base = automap_base()
 Base.prepare(autoload_with=engine)
 
 # Save reference to the table
-for c in Base.classes:
-    print(c)
-
-ufo_to_bases = Base.classes.df_full5
+ufo_to_bases = Base.classes.df_full5_with_id
 
 #################################################
 # Flask Setup
@@ -40,7 +26,7 @@ app = Flask(__name__)
 #################################################
 
 @app.route("/bar_graph")
-def passengers():
+def getLocations():
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
@@ -49,16 +35,9 @@ def passengers():
 
     session.close()
 
-    # Create a dictionary from the row data and append to a list of all_passengers
-    distance_data = []
-    for dist, datetime in results:
-        passenger_dict = {}
-        passenger_dict["distance"] = dist
-        passenger_dict["total_count"] = datetime
-        distance_data.append(passenger_dict)
+    distance_data = [{"distance": dist, "total_count": datetime } for dist, datetime in results]
 
     return jsonify(distance_data)
-
 
 if __name__ == '__main__':
     app.run(debug=True)

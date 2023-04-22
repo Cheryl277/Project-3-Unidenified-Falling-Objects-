@@ -1,6 +1,7 @@
 function init() {
     // Get the JSON data and console log it
-    d3.json('../Resources/ufo_to_bases.json').then(function (data) {
+    d3.json("http://127.0.0.1:5000/bar_graph").then(function (data) {
+    //d3.json('../Resources/ufo_to_bases.json').then(function (data) {
         let ufo_bases_data = data;
         console.log(ufo_bases_data);
     });
@@ -13,13 +14,13 @@ function init() {
     });
 
     //bar graph
-    //d3.json('../Resources/ufo_to_bases.json').then(function (data) {
-    d3.json("http://127.0.0.1:5000/bar_graph").then(function (data) {
+    d3.json('../Resources/ufo_to_bases.json').then(function (data) {
+    //d3.json("http://127.0.0.1:5000/bar_graph").then(function (data) {
         var trace = {
-            //x: Object.values(data).map(o => { return o.dist }),
-            //y: Object.values(data).map(o => { return o.datetime }),
-            x: distance,
-            y: total_count,
+            x: Object.values(data).map(o => { return o.dist }),
+            y: Object.values(data).map(o => { return o.datetime }),
+            //x: distance,
+            //y: total_count,
             type: 'bar',
         };
 
