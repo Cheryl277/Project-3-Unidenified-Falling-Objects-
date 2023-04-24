@@ -67,10 +67,13 @@ Promise.all([d3.json(UFOData), d3.json(PopulationData)]).then(function (data) {
 
     var PopLat = [];
     var PopLon = [];
+    var PopDen = [];
 
     PopLat = Object.values(PopulationJSON).map(o => { return o.lat });
     PopLon = Object.values(PopulationJSON).map(o => { return o.lng });
+    PopDen = Object.values(PopulationJSON).map(o => { return o.density });
 
+    //needs to be something based off of population density
     var pop_heatArray = [];
 
     for (var x = 0; x < PopLat.length; x++) {

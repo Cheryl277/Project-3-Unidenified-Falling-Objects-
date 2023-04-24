@@ -50,8 +50,8 @@ function init() {
 
         let layout = {
             title: "Distance from UFO Sighting to Closest Military Base (miles)",
-            xaxis: { title: "Distance to Closest Military Base (miles)" },
-            yaxis: { title: "Count" },
+            xaxis: { title: "Distance to Closest Military Base (miles)", range: [0,200]},
+            yaxis: { title: "Count" }
         };
 
         console.log("Layout:", layout);
@@ -114,7 +114,7 @@ function init() {
             }
         };
 
-        var line_data = [trace1, trace2, trace3];
+        var line_data = [trace1, trace3];
 
         var layout = {
             title: 'Sightings by Year (1900 - 2023)',
