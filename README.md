@@ -18,9 +18,15 @@
 
 ## Data Analysis
 
-![screenshot_2023-04-20_at_6 48 41_pm_720](https://user-images.githubusercontent.com/120348065/233878374-545372b3-0595-495a-a560-13edf250d086.png)
+
+<img width="759" alt="Screen Shot 2023-04-24 at 7 52 49 PM" src="https://user-images.githubusercontent.com/120348065/234139729-7bd40d30-ae58-423e-9cab-a7ed2854cf3d.png">
 
 - The graph above shows that there are significantly more UFO sightings than meteorite sightings. Especially
+
+
+![screenshot_2023-04-20_at_6 48 34_pm](https://user-images.githubusercontent.com/120348065/234139232-83db95b2-b82d-4967-bc2c-b2b4aac6a3cc.png)
+
+-
 
 ## Bases and Sightings Map
  - Using D3.json each dataset was read in and all points were mapped according to their coordinates.
