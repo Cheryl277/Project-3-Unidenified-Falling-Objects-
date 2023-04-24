@@ -31,6 +31,6 @@
 [Meteorite Landings Dataset](https://catalog.data.gov/dataset/meteorite-landings) 
 [Military Bases Dataset](https://public.opendatasoft.com/explore/dataset/military-bases/table/) 
 [Fireball & Bolid Dataset](https://cneos.jpl.nasa.gov/fireballs/) 
-[Calculation of Map Coordinates - for Fireball Data]((https://lweb.cfa.harvard.edu/space_geodesy/ATLAS/cme_convert.html) 
+[Calculation of Map Coordinates for Fireball Data]((https://lweb.cfa.harvard.edu/space_geodesy/ATLAS/cme_convert.html) 
 
 [Javascript Library](https://codepen.io/chrisgannon/pen/oqrKNE)  
