@@ -22,6 +22,11 @@
 
 - The graph above shows that there are significantly more UFO sightings than meteorite sightings. Especially
 
+## Bases and Sightings Map
+ - Using D3.json each dataset was read in and all points were mapped according to their coordinates.
+ - Each point is made to be able to be clicked upon to get information of the name of the military base or name of the sighting
+ - Each group (bases, UFO sightings, and meteor sightings) has an option to toggle on or off, depending on which layers the user wants to be displayed
+
 ## Documentation
 
 
