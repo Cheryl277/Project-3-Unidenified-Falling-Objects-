@@ -20,7 +20,7 @@
 
 ![screenshot_2023-04-20_at_6 48 41_pm_720](https://user-images.githubusercontent.com/120348065/233878374-545372b3-0595-495a-a560-13edf250d086.png)
 
-### The graph above shows that there are significantly more UFO sightings than meteorite sightings. Especially
+- The graph above shows that there are significantly more UFO sightings than meteorite sightings. Especially
 
 ## Documentation
 
