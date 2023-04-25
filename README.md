@@ -25,7 +25,7 @@
 
 ![screenshot_2023-04-20_at_6 48 34_pm](https://user-images.githubusercontent.com/120348065/234139232-83db95b2-b82d-4967-bc2c-b2b4aac6a3cc.png)
 
--
+- The graph above shows the distance from UFO sighting to the closest military bases. This graph proves that majority of the UFO sightings are close to military bases (most of the UFO sightings are within 100 miles to the military bases). The reason may be that the sightings was possibly mistaken to be UFO, since military bases do test out new aircrafts/technolgies. 
 
 ## Bases and Sightings Map
  - Using D3.json each dataset was read in and all points were mapped according to their coordinates.
