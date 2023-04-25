@@ -1,6 +1,0 @@
-{
-"type": "FeatureCollection",
-"features": [
-{ "type": "Feature", "properties": { "Altitude (km)": 52.0, "Velocity (km/s)": 24.5, "Total Radiated Energy (J)": 323000000000.0, "Calculated Total Impact Energy (kt)": 0.85, "Dates": "2010-03-08", "Times (UT)": "22:02:07", "total_minutes": 1322.1166666666666, "lat": 32.0, "latitude": 32.0, "long": -92.9, "longitude": -92.9, "Address": "2422+22 Goldonna, LA, USA" }, "geometry": { "type": "Point", "coordinates": [ -92.9, 32.0 ] } }
-]
-}
