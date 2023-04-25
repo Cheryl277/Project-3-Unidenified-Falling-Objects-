@@ -31,11 +31,13 @@
  - Using D3.json each dataset was read in and all points were mapped according to their coordinates.
  - Each point is made to be able to be clicked upon to get information of the name of the military base or name of the sighting
  - Each group (bases, UFO sightings, and meteor sightings) has an option to toggle on or off, depending on which layers the user wants to be displayed
+ 
 
 ## Maps
 
 ### Geo-Map:
 ![image_720](https://user-images.githubusercontent.com/120348065/234141000-6bc4ed63-016b-44a7-8ce7-0216131b2c80.png)
+
 
 ### Heat Map:
 <img width="766" alt="Screen Shot 2023-04-24 at 8 09 44 PM" src="https://user-images.githubusercontent.com/120348065/234141606-67cd7d90-fd3f-4425-ad7f-bf71371b413c.png">
