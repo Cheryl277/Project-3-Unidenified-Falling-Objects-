@@ -32,6 +32,11 @@
  - Each point is made to be able to be clicked upon to get information of the name of the military base or name of the sighting
  - Each group (bases, UFO sightings, and meteor sightings) has an option to toggle on or off, depending on which layers the user wants to be displayed
 
+## Maps
+![image_720](https://user-images.githubusercontent.com/120348065/234141000-6bc4ed63-016b-44a7-8ce7-0216131b2c80.png)
+
+
+
 ## Documentation
 
 
